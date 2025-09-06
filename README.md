@@ -16,7 +16,6 @@ Here are the UI mockups for the Smart Water Guardian platform.
 ### Gamification Leaderboard
 ![Gamification Leaderboard](./leaderboard_ui.png)
 
-*(To make this work, you'll need to upload the UI images you created to your GitHub repository and name them `dashboard_ui.png` and `leaderboard_ui.png`)*
 
 ---
 
