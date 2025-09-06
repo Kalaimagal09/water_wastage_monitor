@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Water Guardian - Prototype</title>
+    <!-- Tailwind CSS for rapid, modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Use the Inter font family defined above */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* A simple fade-in animation for pages */
+        .page {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <!-- Header Section -->
+        <header class="flex justify-between items-center mb-6">
+            <div class="flex items-center space-x-3">
+                <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path><path d="M9 9a3 3 0 013-3v0a3 3 0 013 3v0a3 3 0 01-3 3v0a3 3 0 01-3-3v0z" fill="currentColor" fill-opacity="0.3"></path></svg>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Smart Water Guardian</h1>
+            </div>
+            <nav class="flex space-x-2 md:space-x-4">
+                <button id="nav-dashboard" class="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">Dashboard</button>
+                <button id="nav-leaderboard" class="px-4 py-2 text-sm font-semibold text-gray-700 bg-white rounded-lg shadow-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">Leaderboard</button>
+            </nav>
+        </header>
+
+        <!-- Main Content Area -->
+        <main>
+            <!-- Dashboard Page -->
+            <div id="dashboard-page" class="page">
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-red-500 p-6 rounded-xl shadow-lg text-white">
+                        <div class="flex items-center">
+                            <svg class="w-8 h-8 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                            <div>
+                                <div class="text-4xl font-bold" id="active-alerts-count">3</div>
+                                <div class="text-red-200">Active Alerts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-500 p-6 rounded-xl shadow-lg text-white">
+                         <div class="flex items-center">
+                            <svg class="w-8 h-8 mr-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd" opacity="0.3"></path><path d="M5.5 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill-opacity="1"></path></svg>
+                            <div>
+                                <div class="text-4xl font-bold" id="water-saved">1,521 L</div>
+                                <div class="text-blue-200">Water Saved This Month</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-orange-500 p-6 rounded-xl shadow-lg text-white">
+                         <div class="flex items-center">
+                            <svg class="w-8 h-8 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                            <div>
+                                <div class="text-4xl font-bold" id="predicted-leaks">2</div>
+                                <div class="text-orange-200">Potential Leaks Detected</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Status Overview -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Live Status Overview</h2>
+                    <div id="status-list" class="space-y-4">
+                        <!-- Floor status items will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard Page -->
+            <div id="leaderboard-page" class="page hidden">
+                 <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">💧 Water Savers Challenge 💧</h2>
+                    <p class="text-gray-500 mb-6">Rankings for the current month. Keep up the great work!</p>
+                    <div id="leaderboard-list" class="space-y-3 text-left">
+                        <!-- Leaderboard items will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        // --- SIMULATED DATA ---
+        // In a real app, this would come from a server/API.
+        const floorData = [
+            { id: 1, name: 'Floor 1 - West Wing', status: 'ok', taps: 12, alertCount: 0 },
+            { id: 2, name: 'Floor 2 - West Wing', status: 'alert', taps: 12, alertCount: 1 },
+            { id: 3, name: 'Floor 3 - East Wing', status: 'alert', taps: 10, alertCount: 2 },
+            { id: 4, name: 'Floor 4 - East Wing', status: 'ok', taps: 10, alertCount: 0 },
+            { id: 5, name: 'Cafeteria & Common Area', status: 'ok', taps: 8, alertCount: 0 }
+        ];
+
+        const leaderboardData = [
+            { rank: 1, name: 'Floor 4 - East Wing', saved: 520, emoji: '🥇' },
+            { rank: 2, name: 'Floor 1 - West Wing', saved: 450, emoji: '🥈' },
+            { rank: 3, name: 'Cafeteria & Common Area', saved: 380, emoji: '🥉' },
+            { rank: 4, name: 'Floor 2 - West Wing', saved: 210, emoji: '👍' },
+            { rank: 5, name: 'Floor 3 - East Wing', saved: 95, emoji: '💧' }
+        ];
+
+        // --- DOM ELEMENTS ---
+        const dashboardPage = document.getElementById('dashboard-page');
+        const leaderboardPage = document.getElementById('leaderboard-page');
+        const navDashboard = document.getElementById('nav-dashboard');
+        const navLeaderboard = document.getElementById('nav-leaderboard');
+        const statusList = document.getElementById('status-list');
+        const leaderboardList = document.getElementById('leaderboard-list');
+
+        // --- RENDER FUNCTIONS ---
+        
+        // Function to render the floor status list on the dashboard
+        function renderDashboard() {
+            statusList.innerHTML = ''; // Clear previous content
+            floorData.forEach(floor => {
+                const statusColor = floor.status === 'alert' ? 'red' : 'green';
+                const statusText = floor.status === 'alert' ? `${floor.alertCount} Active Alert(s)` : 'All Taps OK';
+
+                const floorHtml = `
+                    <div class="flex items-center p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                        <div class="w-4 h-4 rounded-full bg-${statusColor}-500 mr-4 flex-shrink-0"></div>
+                        <div class="flex-grow">
+                            <p class="font-semibold text-gray-700">${floor.name}</p>
+                            <p class="text-sm text-gray-500">${floor.taps} Taps Monitored</p>
+                        </div>
+                        <div class="text-sm font-medium text-${statusColor}-600">${statusText}</div>
+                    </div>
+                `;
+                statusList.innerHTML += floorHtml;
+            });
+        }
+
+        // Function to render the leaderboard list
+        function renderLeaderboard() {
+            leaderboardList.innerHTML = ''; // Clear previous content
+            leaderboardData.forEach(item => {
+                const itemHtml = `
+                    <div class="flex items-center p-4 rounded-lg transition-transform hover:scale-105" style="background-color: ${item.rank <= 3 ? '#f0f9ff' : '#ffffff'}; border-left: 5px solid ${item.rank === 1 ? '#facc15' : item.rank === 2 ? '#d1d5db' : item.rank === 3 ? '#f97316' : '#e5e7eb'};">
+                        <div class="text-2xl font-bold mr-4">${item.emoji}</div>
+                        <div class="flex-grow">
+                            <p class="font-bold text-gray-800">${item.name}</p>
+                        </div>
+                        <div class="text-lg font-semibold text-blue-600">${item.saved} L Saved</div>
+                    </div>
+                `;
+                leaderboardList.innerHTML += itemHtml;
+            });
+        }
+
+
+        // --- NAVIGATION LOGIC ---
+        function showPage(pageToShow) {
+            dashboardPage.classList.add('hidden');
+            leaderboardPage.classList.add('hidden');
+            
+            navDashboard.classList.remove('bg-blue-600', 'text-white');
+            navDashboard.classList.add('bg-white', 'text-gray-700');
+            navLeaderboard.classList.remove('bg-blue-600', 'text-white');
+            navLeaderboard.classList.add('bg-white', 'text-gray-700');
+
+            if (pageToShow === 'dashboard') {
+                dashboardPage.classList.remove('hidden');
+                navDashboard.classList.add('bg-blue-600', 'text-white');
+                navDashboard.classList.remove('bg-white', 'text-gray-700');
+            } else {
+                leaderboardPage.classList.remove('hidden');
+                navLeaderboard.classList.add('bg-blue-600', 'text-white');
+                navLeaderboard.classList.remove('bg-white', 'text-gray-700');
+            }
+        }
+
+        navDashboard.addEventListener('click', () => showPage('dashboard'));
+        navLeaderboard.addEventListener('click', () => showPage('leaderboard'));
+
+        // --- INITIAL LOAD ---
+        function initializeApp() {
+            renderDashboard();
+            renderLeaderboard();
+            showPage('dashboard'); // Start on the dashboard
+        }
+
+        // Run the app once the document is fully loaded
+        document.addEventListener('DOMContentLoaded', initializeApp);
+
+    </script>
+</body>
+</html>
