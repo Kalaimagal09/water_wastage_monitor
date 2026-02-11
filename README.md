@@ -2,7 +2,7 @@
 
 > Saving Water, One Drop at a Time with AI and Gamification.
 
-A hackathon project submitted by Kalaimagal. R & Pradhosh. K.M
+A hackathon project submitted by Kalaimagal. R 
 
 ---
 
